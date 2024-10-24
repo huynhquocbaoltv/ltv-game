@@ -11,6 +11,7 @@ import New from "./components/New.vue";
 import Join from "./components/Join.vue";
 import Game from "./components/Game.vue";
 import Test from "./components/Test.vue";
+import View from "./components/View.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: "/test",
       component: Test,
       name: "test",
+    },
+    {
+      path: "/view",
+      component: View,
+      name: "view",
     },
   ],
 });

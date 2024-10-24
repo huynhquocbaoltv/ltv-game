@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col w-8 h-8 m-1 user-area border rounded-md text-white items-center"
+    class="flex flex-col w-8 h-8 p-1 user-area border rounded-md text-white items-center"
     style="background-color: #182230"
   >
     You

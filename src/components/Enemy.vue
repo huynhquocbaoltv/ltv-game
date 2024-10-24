@@ -1,11 +1,13 @@
 <template>
-  <el-tooltip :content="name" placement="top">
-    <div
-      class="flex flex-col w-8 h-8 m-1 enemy-area border rounded-md"
-      style="background-color: #4a6997"
-      :class="{ 'enemy-shoot-area': action === ACTIONS.SHOOT }"
-    ></div>
-  </el-tooltip>
+  <div>
+    <el-tooltip :content="name" placement="top">
+      <div
+        class="flex flex-col w-8 h-8 p-1 enemy-area border rounded-md"
+        style="background-color: #4a6997"
+        :class="{ 'enemy-shoot-area': action === ACTIONS.SHOOT }"
+      ></div>
+    </el-tooltip>
+  </div>
 </template>
 
 <script setup lang="ts">

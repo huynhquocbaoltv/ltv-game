@@ -2,6 +2,7 @@ export const ACTIONS = {
   RUN: "RUN",
   SHOOT: "SHOOT",
   READY: "READY",
+  WAIT: "WAIT",
 };
 
 export interface Player {

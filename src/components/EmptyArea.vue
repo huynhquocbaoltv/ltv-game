@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-8 h-8 m-1 flex justify-center items-center text-white empty-area"
+    class="w-8 h-8 p-1 flex justify-center items-center text-white empty-area"
   >
     <div v-if="action === ACTIONS.RUN">+</div>
     <div v-else class="w-0.5 h-0.5 bg-white"></div>

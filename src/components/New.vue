@@ -47,7 +47,7 @@
 // Import vue -> external -> component -> dev -> local (alphabet) -> @types
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { getRoom, joinRoom, writeUserData } from "../firebase";
+import { createNewGame, getRoom, joinRoom, writeUserData } from "../firebase";
 
 defineOptions({
   name: "New",
@@ -93,6 +93,8 @@ const handleJoin = async () => {
   let locations: string[] = [];
   if (room) {
     locations = Object.keys(room).map((key) => `${room[key].x}-${room[key].y}`);
+  } else {
+    await createNewGame(form.value.room);
   }
   const newLocation = getNewLocation(locations);
   await joinRoom(form.value.room, {

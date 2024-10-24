@@ -1,15 +1,11 @@
 import { defineStore } from "pinia";
-import {
-  getDatabase,
-  ref as dbRef,
-  onValue,
-  DatabaseReference,
-} from "firebase/database";
+import { ref as dbRef, onValue } from "firebase/database";
 import { db } from "../firebase";
 
 export interface LtvGameState {
   rooms: Record<string, any>;
   user: Record<string, any>;
+  game: Record<string, any>;
 }
 
 export const useLtvGameStore = defineStore("LtvGame", {
@@ -17,8 +13,19 @@ export const useLtvGameStore = defineStore("LtvGame", {
     rooms: {},
     user: {
       id: "",
-      username: "",
+      name: "",
       room: "",
+      location: "",
+      oldLocation: "",
+      live: false,
+      shield: false,
+      energy: 0,
+      shoot: "",
+      run: "",
+    },
+    game: {
+      step: 0,
+      time: 15,
     },
   }),
   actions: {
@@ -26,6 +33,10 @@ export const useLtvGameStore = defineStore("LtvGame", {
       onValue(dbRef(db, "rooms/" + room + "/"), (snapshot) => {
         const data = snapshot.val();
         this.rooms = data;
+      });
+      onValue(dbRef(db, "games/" + room), (snapshot) => {
+        const data = snapshot.val();
+        this.game = data;
       });
     },
     setUser() {
@@ -40,6 +51,7 @@ export const useLtvGameStore = defineStore("LtvGame", {
           id,
           ...data,
         };
+        console.log(data);
         this.setLtvGame(data.room);
       });
     },
